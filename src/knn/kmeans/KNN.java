@@ -152,6 +152,10 @@ public class KNN {
             if(this.TestLines.get(i).get_Class().equalsIgnoreCase(this.possibleClass.get(posClass))){
                 aux[this.possibleClass.indexOf(this.TestLines.get(i).getPredicted())]++;
             }
+            if(this.TestLines.get(i).getPredicted().equalsIgnoreCase(this.possibleClass.get(posClass)) 
+            && !this.TestLines.get(i).get_Class().equalsIgnoreCase(this.possibleClass.get(posClass))){
+                aux[this.possibleClass.indexOf(this.TestLines.get(i).get_Class())]++;
+            }
         }
         return aux; 
     }
@@ -162,12 +166,12 @@ public class KNN {
         for(int i=0; i<this.possibleClass.size(); i++){
             this.ConfusionMatrix[i] = countAccuracy(Size, i);
         }
-        System.out.println(this.ConfusionMatrix.toString());
-    }
-
-    public void print_tests(){
-        for(int i=0; i<this.TestLines.size();i++){
-            System.out.println("Predicted: "+this.TestLines.get(i).getPredicted()+"| Correct: "+this.TestLines.get(i).get_Class()+"");
+        for(int i=0;i<Size;i++){
+            for(int j=0;j<Size;j++){
+                System.out.print(this.ConfusionMatrix[i][j]+" | ");        
+            }
+            System.out.println();
         }
+        
     }
 }

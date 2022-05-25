@@ -9,10 +9,8 @@ public class Line implements Comparable<Line> {
     private ArrayList <Double> Data;
     private double distance;
     private String Predicted;
+
     
-
-
-
     public String get_Class() {
         return Class;
     }
